@@ -29,15 +29,19 @@ path = '/home/david/work/1144_lt/spectra/nicola_2/WDJ114404.76+052951.77/' #note
 
 vispath = path + 'VIS_notell/'
 sp = glob.glob(vispath+'*TAC.csv')
-
+sp2 = glob.glob('stare_extractions/*VIS*.csv')
+sp = np.hstack((sp, sp2))
+print(sp)
 for s in sp:
     print(s)
     w, f, e = np.loadtxt(s, unpack=True, delimiter=',')
     mask = (w > 8450) & (w < 8700)
-    w, f = w[mask], f[mask]
+    w, f, e = w[mask], f[mask], e[mask]
     f = convolve(f,Box1DKernel(6))
+    e = convolve(e,Box1DKernel(6))/(6**0.5)
     fig =plt.figure()
-    plt.plot(w, f)
+    plt.plot(w[5:-5], f[5:-5])
+  #  plt.plot(w[5:-5], e[5:-5], alpha=0.5)
     [plt.axvline(line, c='r', ls='--') for line in lines]
     cid = fig.canvas.mpl_connect('key_press_event',on_key)
     plt.show()
