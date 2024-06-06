@@ -6,3 +6,4 @@ taurus
 *.fits
 *.dat
 talk/*
+data/*
