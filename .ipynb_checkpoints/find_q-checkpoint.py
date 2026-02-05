@@ -2,6 +2,7 @@
 
 """
 Find q and K2 with an mc.
+20260204 Updated with new wd mass
 """
 
 #first get the python modules we need
@@ -52,7 +53,8 @@ k2s = []
 
 
 kem, keme = 198.09305398172296, 0.4535365132628666
-M1, M1e = 0.475735, 0.045966
+# M1, M1e = 0.475735, 0.045966
+M1, M1e = 0.49, 0.05
 k1, k1e = 32.86031937992142, 3.9970660761849968
 period = 4.223
 
